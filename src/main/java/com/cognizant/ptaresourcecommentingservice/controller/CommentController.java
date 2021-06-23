@@ -30,7 +30,12 @@ public class CommentController {
     public Comment getById(@PathVariable Integer id){
         return commentRepo.getById(id);
     }
-
+    @GetMapping(value="/get-by-resource-id")
+    @ResponseStatus(HttpStatus.OK)
+    public List< Comment> getCommentByResourceId(@RequestParam Integer id){
+        List<Comment> commentList =  commentRepo.findCommentByResourceId(id);
+        return commentList;
+    }
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public void editComments(@RequestBody Comment comment, @PathVariable Integer id){
