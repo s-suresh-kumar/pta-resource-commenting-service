@@ -16,7 +16,7 @@ public class CommentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Comment createResource(@RequestBody Comment comment){
+    public Comment createComment(@RequestBody Comment comment){
         return commentRepo.save(comment);
     }
     @GetMapping
