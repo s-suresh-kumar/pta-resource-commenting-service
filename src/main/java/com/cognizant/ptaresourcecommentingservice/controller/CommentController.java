@@ -30,7 +30,7 @@ public class CommentController {
     public Comment getById(@PathVariable Integer id){
         return commentRepo.getById(id);
     }
-    @GetMapping(value="/get-by-resource-id")
+    @GetMapping(value="/get-by-resource-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List< Comment> getCommentByResourceId(@RequestParam Integer id){
         List<Comment> commentList =  commentRepo.findCommentByResourceId(id);
@@ -48,6 +48,11 @@ public class CommentController {
         commentRepo.save(comment);
     }
 
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteComment(@PathVariable Integer id) {
+        commentRepo.deleteById(id);
+    }
 
 
 
