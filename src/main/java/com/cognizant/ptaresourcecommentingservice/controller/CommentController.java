@@ -22,6 +22,7 @@ public class CommentController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Comment> getAllComments(){
+
         return commentRepo.findAll();
     }
 
@@ -30,10 +31,12 @@ public class CommentController {
     public Comment getById(@PathVariable Integer id){
         return commentRepo.getById(id);
     }
-    @GetMapping(value="/get-by-resource-id/{id}")
+
+    @GetMapping(value="/get/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List< Comment> getCommentByResourceId(@RequestParam Integer id){
+    public List< Comment> getCommentByResourceId(@PathVariable Integer id){
         List<Comment> commentList =  commentRepo.findCommentByResourceId(id);
+        System.out.println("CommentList "+commentList);
         return commentList;
     }
     @PutMapping
