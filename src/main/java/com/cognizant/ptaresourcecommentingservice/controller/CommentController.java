@@ -39,8 +39,8 @@ public class CommentController {
         System.out.println("CommentList "+commentList);
         return commentList;
     }
-    @PutMapping
-    @ResponseStatus(HttpStatus.OK)
+    @PutMapping(value="{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void editComments(@RequestBody Comment comment, @PathVariable Integer id){
         if (comment.getId() == null) {
             comment.setId(id);
@@ -51,12 +51,10 @@ public class CommentController {
         commentRepo.save(comment);
     }
 
-    @DeleteMapping
+    @DeleteMapping(value="{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteComment(@PathVariable Integer id) {
         commentRepo.deleteById(id);
     }
-
-
 
 }
