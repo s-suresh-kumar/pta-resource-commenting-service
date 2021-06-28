@@ -26,20 +26,20 @@ public class CommentController {
         return commentRepo.findAll();
     }
 
-    @GetMapping(value="/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Comment getById(@PathVariable Integer id){
-        return commentRepo.getById(id);
-    }
+//    @GetMapping(value="/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public Comment getById(@PathVariable Integer id){
+//        return commentRepo.getById(id);
+//    }
 
-    @GetMapping(value="/get/{id}")
+    @GetMapping(value="/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List< Comment> getCommentByResourceId(@PathVariable Integer id){
         List<Comment> commentList =  commentRepo.findCommentByResourceId(id);
         System.out.println("CommentList "+commentList);
         return commentList;
     }
-    @PutMapping(value="{id}")
+    @PutMapping(value="/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void editComments(@RequestBody Comment comment, @PathVariable Integer id){
         if (comment.getId() == null) {
@@ -51,7 +51,7 @@ public class CommentController {
         commentRepo.save(comment);
     }
 
-    @DeleteMapping(value="{id}")
+    @DeleteMapping(value="/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteComment(@PathVariable Integer id) {
         commentRepo.deleteById(id);
